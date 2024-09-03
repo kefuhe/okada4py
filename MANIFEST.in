@@ -1,2 +1,16 @@
+# Include header files
 include src/dc3d.h
 include src/disloc3d.h
+
+# Include README and LICENSE files
+include README.md
+include LICENSE
+
+# Recursively include all .cpp files in the src directory
+recursive-include src *.cpp
+
+# Recursively include all .py files in the src directory
+recursive-include src *.py
+
+# Recursively include all .py files in the test directory
+recursive-include test *.py
