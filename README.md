@@ -8,6 +8,15 @@ This is a python implementation of the solution proposed by Okada in 1992. Pleas
 
 Okada, Y. (1992), Internal deformation due to shear and tensile faults in a half-space, Bulletin of the Seismological Society of America, 82(2), 1018–1040.
 
+## Introduction
+
+This repository is a modified version of the original [okada4py](https://github.com/jolivetr/okada4py) package. The modifications include:
+
+1. Adding an `okada4py` folder and an `__init__.py` file in the `src` directory.
+2. Adding the `init_numpy` function and related calls in the `okada92_py3.cpp` file to initialize NumPy.
+
+These changes were made to ensure compatibility and proper initialization of NumPy within the package.
+
 ## Installation
 
 To install the `okada4py` package, follow these steps:
