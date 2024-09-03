@@ -1,6 +1,7 @@
 from setuptools import setup, Extension
 import numpy as np
 import sys
+from setuptools.command.build_ext import build_ext as build_ext_orig
 
 # Simplify NumPy include directory acquisition
 npinclude = np.get_include()
@@ -29,6 +30,13 @@ ext_modules = [Extension('okada4py._okada92',
             include_dirs=include_dirs,
             extra_compile_args=CFLAGS)]
 
+# Custom build_ext command to ensure include paths are set correctly
+class build_ext(build_ext_orig):
+    def build_extensions(self):
+        for ext in self.extensions:
+            ext.include_dirs = include_dirs
+        super().build_extensions()
+
 # Main
 setup(
     name='okada4py',
@@ -36,4 +44,5 @@ setup(
     packages=['okada4py'],
     package_dir={'okada4py': 'src/okada4py'},
     ext_modules=ext_modules,
+    cmdclass={'build_ext': build_ext},
 )

@@ -47,7 +47,7 @@ After installation, verify that the `okada4py` package can be imported in Python
 import okada4py
 ```
 
-If the import is successful, the installation is complete.
+If the import is successful, the installation is complete.  Use `pip show -f okada4py` to show the path where okada4py is installed.
 
 ## Summary
 
