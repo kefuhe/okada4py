@@ -31,6 +31,8 @@ python -m build
 
 This will generate a `.whl` file, typically located in the [`dist/`]. The exact name of the `.whl` file will depend on your package version and Python version. For example, it might be something like `dist/okada4py-12.0.2-py3-none-any.whl`.
 
+**Note:** if you have not build, you can `pip install build` to install it.
+
 ### 2. Install the Wheel Package
 
 Use `pip` to install the generated `.whl` file. Replace `okada4py-12.0.2-py3-none-any.whl` with the actual name of the .whl file generated in the previous step:
