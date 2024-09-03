@@ -8,10 +8,18 @@ extern "C" {
 #include "dc3d.h"
 #include "disloc3d.h"
 #include "Python.h"
-#include "arrayobject.h"
+#include <numpy/arrayobject.h>
+
+int init_numpy() {
+    import_array()
+    return 0; 
+}
 
 static PyObject *py_Okada(PyObject *self, PyObject *args)
 {
+    if (init_numpy() != 0) {
+        return NULL;  // numpy failed to initialize
+    }
     // Arguments for disloc3d
     double *models;         // Dislocations [nmod x 10]: [length, width, depth, dip, strike, xc, yc, ss, ds, ts]
     int nmod;               // Number of dislocations
