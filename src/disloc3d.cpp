@@ -4,6 +4,10 @@
 #include "dc3d.h"
 #include "disloc3d.h"
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
 //
 // TODO: change flagout,flagout2 to int arrays
 // 
