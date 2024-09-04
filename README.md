@@ -10,7 +10,7 @@ Okada, Y. (1992), Internal deformation due to shear and tensile faults in a half
 
 ## Introduction
 
-This repository is a modified version of the original [okada4py](https://github.com/jolivetr/okada4py) package. The modifications include:
+This repository is a modified version for modern installation of the [okada4py](https://github.com/jolivetr/okada4py) package by written by Romain Jolivet. The modifications include:
 
 1. Adding an `okada4py` folder and an `__init__.py` file in the `src` directory.
 2. Adding the `init_numpy` function and related calls in the `okada92_py3.cpp` file to initialize NumPy.
