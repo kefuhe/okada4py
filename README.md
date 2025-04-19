@@ -17,40 +17,115 @@ This repository is a modified version for modern installation of the [okada4py](
 
 These changes were made to ensure compatibility and proper initialization of NumPy within the package.
 
-## Installation
 
-To install the `okada4py` package, follow these steps:
+## Installation Guide for `okada4py`
 
-### 1. Build the Wheel Package
+This guide describes how to build and install the `okada4py` package, including necessary dependencies and platform-specific setup. It supports Python 3.7 and above.
 
-Run the following command in the root directory (`okada4py` here) of your project to build the wheel package:
+---
+
+### 1. Requirements
+
+- Python ≥ 3.7
+- `build`, `setuptools`, and `wheel` packages:
+  ```bash
+  pip install build setuptools wheel
+  ```
+
+---
+
+### 2. Platform-Specific Setup
+
+#### 🔧 **Windows (MSVC toolchain required)**
+
+To compile C++ extensions on Windows, you must install **Microsoft C++ Build Tools**. Follow these steps:
+
+**a. Download and Install Build Tools**
+Visit: [https://visualstudio.microsoft.com/visual-cpp-build-tools/](https://visualstudio.microsoft.com/visual-cpp-build-tools/)
+
+Click **“Download Build Tools”** and run the installer.
+
+**b. During installation, make sure to check the following components:**
+
+✅ **C++ build tools** (main workload)✅ **MSVC v143 or v142 – VS 2022/2019 C++ x64/x86 build tools**✅ **Windows 10 SDK** or **Windows 11 SDK**✅ **CMake tools for Windows** (required by some C++ projects)
+
+> 💡 **Recommended SDK versions**:
+> Use stable versions such as:
+> – `10.0.22621.0` (Windows 11 22H2)
+> – `10.0.19041.0` (Windows 10)
+>
+> ⚠️ Avoid Insider Preview versions like `10.0.26100.0`, which may cause compatibility issues.
+
+**c. Post-installation**
+
+Cnfirm the compiler is available with:
+
+```bash
+cl
+```
+
+You are now ready to build C++-based Python packages.
+
+---
+
+#### 🐧 **Linux/macOS**
+
+On Unix-based systems, ensure a working C++ compiler is installed, such as:
+
+- **Linux:** `g++`, `cmake`, and developer headers (`build-essential` on Debian/Ubuntu)
+- **macOS:** Xcode command line tools (`xcode-select --install`)
+
+---
+
+### 3. Build the Package
+
+Once dependencies are satisfied, build the package from the project root:
 
 ```bash
 python -m build
 ```
 
-This will generate a `.whl` file, typically located in the [`dist/`]. The exact name of the `.whl` file will depend on your package version and Python version. For example, it might be something like `dist/okada4py-12.0.2-py3-none-any.whl`.
+This will generate a `.whl` file in the `dist/` directory, for example:
 
-**Note:** if you have not build, you can `pip install build` to install it.
+```
+dist/okada4py-12.0.2-py3-none-any.whl
+```
 
-### 2. Install the Wheel Package
+---
 
-Use `pip` to install the generated `.whl` file. Replace `okada4py-12.0.2-py3-none-any.whl` with the actual name of the .whl file generated in the previous step:
+### 4. Install the Package
 
-```sh
+Install the generated wheel file with `pip`. Replace `okada4py-12.0.2-py3-none-any.whl` with the actual name of the .whl file generated in the previous step:
+
+```bash
 pip install dist/okada4py-12.0.2-py3-none-any.whl
 ```
 
-### 3. Verify Installation
+---
 
-After installation, verify that the `okada4py` package can be imported in Python:
+### 5. Verify Installation
+
+Check that the package is properly installed:
 
 ```python
 import okada4py
 ```
 
-If the import is successful, the installation is complete.  Use `pip show -f okada4py` to show the path where okada4py is installed.
+You can also verify the installation path using:
 
-## Summary
+```bash
+pip show -f okada4py
+```
 
-By following these steps, you can build and install the `okada4py` package using the modern [`pyproject.toml`](command:_github.copilot.openRelativePath?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2FE%3A%2Fgeocodes%2Fokada4py%2Fpyproject.toml%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%5D "e:\geocodes\okada4py\pyproject.toml") and `wheel` format. This ensures compatibility with current and future Python packaging standards.
+---
+
+## ✅ Summary
+
+This installation process uses the modern `pyproject.toml` and standard `wheel` format to ensure compatibility with current Python packaging standards.
+
+- Windows users must install MSVC and SDKs as described.
+- Linux/macOS users must have a working C++ compiler.
+- All builds are performed with:
+  ```bash
+  python -m build
+  ```
