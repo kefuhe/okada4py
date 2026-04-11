@@ -1,6 +1,12 @@
-# 忽略构建目录
-build/
-dist/
+# Python cache
+__pycache__/
+*.py[cod]
 
-# 忽略egg-info目录
+# Build artifacts
+build/
+wheelhouse/
 *.egg-info/
+
+# Distribution artifacts
+dist/*
+!dist/*.whl
